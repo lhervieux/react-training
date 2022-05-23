@@ -6,9 +6,14 @@ function App() {
   return (
    <div className="App">
      DEMAT BREIZH<br/>
-     <Button text="Hello" />
+     <Button text="Hello" onButtonClicked={() => {
+       console.log();
+     }}
+       bgColor="DodgerBlue"
+       color="AliceBlue"
+     />
      <Button text="Ca roule ?" />
-     <Button text="Bon..." />
+     <Button text="Hello" />
    </div>
   );
 }
