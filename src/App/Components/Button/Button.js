@@ -10,6 +10,7 @@ function Button(props) {
         }
     }}
     style= {{
+        ...props.buttonStyle,
         backgroundColor:props.bgColor,
         color: props.color,
     }}
@@ -19,6 +20,7 @@ function Button(props) {
 
 Button.propTypes = {
     bgColor: PropTypes.string.isRequired,
+    buttonStyle: PropTypes.object,
     color: PropTypes.string.isRequired,
     onButtonClicked: PropTypes.func,
     type: PropTypes.string.isRequired,

@@ -2,20 +2,35 @@ import React from 'react';
 import './App.css';
 import Button from './Components/Button/Button';
 
-function App() {
-  return (
-   <div className="App">
-     DEMAT BREIZH<br/>
-     <Button text="Hello" onButtonClicked={() => {
-       console.log();
-     }}
-       bgColor="DodgerBlue"
-       color="AliceBlue"
-     />
-     <Button text="Ca roule ?" />
-     <Button text="Hello" />
-   </div>
-  );
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    // valeur initiale
+    this.state = {counter: 0, message: 'Aucun message'};
+  }
+  render() {
+    return <div className='App' style={{ textAlign:'center'}}>
+      <div>Valeur de Counter : {this.state.counter}</div>
+      <hr />
+      <Button
+        text='Ajouter 1'
+        bgColor='GreenYellow'
+        color='ForestGreen'
+        onButtonClicked={() => {
+          this.setState({counter: this.state.counter + 1 })
+          console.log(this.state.counter);
+        }}
+      />
+      <Button
+        text='Retirer 1'
+        bgColor='tomato'
+        onButtonClicked={() => {
+          this.setState({counter: this.state.counter - 1 })
+          console.log(this.state.counter);
+        }}
+      />
+    </div>
+  }
 }
 
 export default App;
