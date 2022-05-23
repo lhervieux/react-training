@@ -19,22 +19,20 @@ class App extends React.Component {
       <div>Valeur de Counter : {this.state.counter}</div>
       <hr />
       <Button
-        text='Ajouter 1'
         bgColor='GreenYellow'
         color='ForestGreen'
         onButtonClicked={() => {
           this.setState({counter: this.state.counter + 1 })
           console.log(this.state.counter);
         }}
-      />
+      >Ajouter 1</Button>
       <Button
-        text='Retirer 1'
         bgColor='tomato'
         onButtonClicked={() => {
           this.setState({counter: this.state.counter - 1 })
           console.log(this.state.counter);
         }}
-      />
+      >Retirer 1</Button>
     </div>
   }
 }

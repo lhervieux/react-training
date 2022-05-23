@@ -24,7 +24,9 @@ function Button(props) {
         color: props.color,
     }}
     type={props.type}
-    >{props.text}</button>;
+    >
+    {props.children}
+    </button>;
 }
 
 Button.propTypes = {
@@ -33,6 +35,7 @@ Button.propTypes = {
     color: PropTypes.string.isRequired,
     onButtonClicked: PropTypes.func,
     type: PropTypes.string.isRequired,
+    children: PropTypes.any.isRequired,
 }
 
 Button.defaultProps = {
