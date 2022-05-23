@@ -8,3 +8,13 @@
     font-weight: 700;
     cursor: pointer;
 }
+
+.Button:hover {
+    box-shadow: 15px 20px 25px grey;
+}
+
+.clicked {
+    border: ridge grey;
+    box-shadow: 20px 20px 25px grey;
+    
+}
