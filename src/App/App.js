@@ -8,6 +8,12 @@ class App extends React.Component {
     // valeur initiale
     this.state = {counter: 0, message: 'Aucun message'};
   }
+  componentDidMount() {
+    this.setState({message: 'composant monté'});
+  }
+  componentDidUpdate(prevProps, prevState) {
+    console.log('ancienne, actuelle', prevState, this.state);
+  }
   render() {
     return <div className='App' style={{ textAlign:'center'}}>
       <div>Valeur de Counter : {this.state.counter}</div>
