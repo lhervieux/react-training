@@ -1,7 +1,7 @@
 import React from "react";
 import Button from "../../Button/Button";
 import style from "./MemeForm.module.css";
-import { IMeme } from 'orsys-tjs-meme/dist/interfaces/common';
+import { IImage, IMeme } from 'orsys-tjs-meme/dist/interfaces/common';
 
 const emptyMeme:IMeme = {
   color:'black',
@@ -19,7 +19,8 @@ const emptyMeme:IMeme = {
 //types
 interface IMemeFormProps {
   meme: IMeme,
-  onMemeChange: Function
+  onMemeChange: Function,
+  images:Array<IImage>
 }
 interface IMemeFormState {}
 
@@ -52,9 +53,14 @@ const MemeForm: React.FC<IMemeFormProps> = (props) => {
           <hr />
           <h2>Image</h2>
           <select
-
+            onChange={(evt: React.ChangeEvent<HTMLSelectElement>) => {
+              props.onMemeChange({ ...props.meme, imageId: Number(evt.target.value) });
+            }}
           >
             <option value="-1">Aucune</option>
+            {props.images.map((img:IImage, position:number) => {
+              return <option value={img.id} key={'select-img-'+position}>{img.name}</option>;
+            })}
 
           </select>
           <hr />
@@ -144,9 +150,12 @@ const MemeForm: React.FC<IMemeFormProps> = (props) => {
               <input
                 id="f_underline"
                 type="checkbox"
-                checked={props.meme.underline ? true : false}
-                onChange={(evt) => {
-                  props.onMemeChange({...props.meme, underline: evt.target.value})
+                checked={props.meme.underline}
+                onChange={(evt: React.ChangeEvent<HTMLInputElement>) => {
+                  props.onMemeChange({
+                    ...props.meme,
+                    underline: evt.target.checked,
+                  });
                 }}
 
               />
@@ -157,8 +166,13 @@ const MemeForm: React.FC<IMemeFormProps> = (props) => {
               <input
                 id="f_italic"
                 type="checkbox"
-                checked={props.meme.italic ? true : false}
-
+                checked={props.meme.italic}
+                onChange={(evt: React.ChangeEvent<HTMLInputElement>) => {
+                  props.onMemeChange({
+                    ...props.meme,
+                    italic: evt.target.checked,
+                  });
+                }}
               />
             </div>
           </div>

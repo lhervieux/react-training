@@ -9,7 +9,7 @@ function Footer(props) {
     useEffect(() => {}, [props]);
   return (
     <div className={style.Footer} data-testid="Footer">
-        Footer
+        {props.children}
     </div>
   )
 }

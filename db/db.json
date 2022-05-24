@@ -2,7 +2,7 @@
   "memes": [
     {
       "id": 0,
-      "color": "red",
+      "color": "#FF6347",
       "fontSize": 40,
       "fontWeight": "900",
       "imageId": 0,
@@ -14,7 +14,7 @@
       "y": 50
     },
     {
-      "color": "blue",
+      "color": "#6495ED",
       "fontSize": 40,
       "fontWeight": "900",
       "imageId": 0,
@@ -31,11 +31,11 @@
     {
         "id": 0,
         "url": "good_enough.jpg",
-        "w": 805,
-        "h": 453,
+        "w": 1280,
+        "h": 720,
         "name": "Good Enough"
       },
-      { "id": 1, "url": "Jackie-Chan-WTF.jpg", "w": 1280, "h": 720, "name": "Jackie" },
-      { "id": 2, "url": "no_the_office.jpg", "w": 752, "h": 423, "name": "The Office" }
+      { "id": 1, "url": "Jackie-Chan-WTF.jpg", "w": 500, "h": 375, "name": "Jackie" },
+      { "id": 2, "url": "no_the_office.jpg", "w": 1000, "h": 600, "name": "The Office" }
   ]
 }
