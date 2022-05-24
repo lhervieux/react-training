@@ -2,6 +2,7 @@ import React from "react";
 import Button from "../../Button/Button";
 import style from "./MemeForm.module.css";
 import { IImage, IMeme } from 'orsys-tjs-meme/dist/interfaces/common';
+import { ADR_REST, REST_RESOURCES } from "../../../config/config";
 
 const emptyMeme:IMeme = {
   color:'black',
@@ -10,7 +11,7 @@ const emptyMeme:IMeme = {
   x:0, y:0,
   fontSize:20,
   fontWeight:'500',
-  imageId:0,
+  imageId:-1,
   italic:false,
   underline: false,
 
@@ -29,12 +30,27 @@ interface IMemeFormState {}
 //const initialState: IMemeFormProps = {meme: IMeme};
 const initialState: IMemeFormState = {};
 
-
 const MemeForm: React.FC<IMemeFormProps> = (props) => {
+  function save() {
+      const prSave = fetch (`${ADR_REST}${REST_RESOURCES.memes}`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json'},
+      body: JSON.stringify(props.meme)
+    })
+    .then((f:Response) => {
+      //const obj = f.json;
+      console.log('ok');
+    },
+    () => {
+      console.log('ko');
+    })
+  }
+
   return (
        <div data-testid="MemeForm" className={style.MemeForm}>
         <form onSubmit={(evt:React.FormEvent<HTMLFormElement>) => {
             evt.preventDefault();
+            save();
           }}
           onReset={(evt:React.FormEvent<HTMLFormElement>) => {
             props.onMemeChange(emptyMeme);
@@ -46,7 +62,7 @@ const MemeForm: React.FC<IMemeFormProps> = (props) => {
             id="f_titre"
             placeholder="saisir titre"
             value={props.meme.titre}
-            onChange={(evt) => {
+            onChange={(evt: React.ChangeEvent<HTMLInputElement>) => {
               props.onMemeChange({...props.meme, titre: evt.target.value})
             }}
              />
@@ -68,7 +84,7 @@ const MemeForm: React.FC<IMemeFormProps> = (props) => {
           <input
             type="text"
             value={props.meme.text}
-            onChange={(evt) => {
+            onChange={(evt: React.ChangeEvent<HTMLInputElement>) => {
               props.onMemeChange({...props.meme, text: evt.target.value})
             }}
           />
@@ -80,7 +96,7 @@ const MemeForm: React.FC<IMemeFormProps> = (props) => {
                 type="number"
                 className={style.smallInput}
                 value={props.meme.x}
-                onChange={(evt) => {
+                onChange={(evt: React.ChangeEvent<HTMLInputElement>) => {
                   props.onMemeChange({...props.meme, x: evt.target.value})
                 }}
               />
@@ -92,7 +108,7 @@ const MemeForm: React.FC<IMemeFormProps> = (props) => {
                 type="number"
                 className={style.smallInput}
                 value={props.meme.y}
-                onChange={(evt) => {
+                onChange={(evt: React.ChangeEvent<HTMLInputElement>) => {
                   props.onMemeChange({...props.meme, y: evt.target.value})
                 }}
 
@@ -105,7 +121,7 @@ const MemeForm: React.FC<IMemeFormProps> = (props) => {
             type="color"
             id="f_color"
             value={props.meme.color}
-            onChange={(evt) => {
+            onChange={(evt: React.ChangeEvent<HTMLInputElement>) => {
               props.onMemeChange({...props.meme, color: evt.target.value})
             }}
 
@@ -120,7 +136,7 @@ const MemeForm: React.FC<IMemeFormProps> = (props) => {
 
                 min={0}
                 value={props.meme.fontSize}
-                onChange={(evt) => {
+                onChange={(evt: React.ChangeEvent<HTMLInputElement>) => {
                   props.onMemeChange({...props.meme, fontSize: evt.target.value})
                 }}
 
@@ -136,7 +152,7 @@ const MemeForm: React.FC<IMemeFormProps> = (props) => {
                 step="100"
                 max="900"
                 value={props.meme.fontWeight}
-                onChange={(evt) => {
+                onChange={(evt: React.ChangeEvent<HTMLInputElement>) => {
                   props.onMemeChange({...props.meme, fontWeight: evt.target.value})
                 }}
 

@@ -8,10 +8,12 @@ import Footer from './Components/Ui/Footer/Footer';
 import Header from './Components/Ui/Header/Header';
 import Navbar from './Components/Ui/Navbar/Navbar';
 import { ADR_REST, REST_RESOURCES } from './config/config';
+import MemeThumbnail from './Components/MemeThumbnail/MemeThumbnail';
 
 interface IAppState {
   meme:IMeme,
   images:Array<IImage>
+  memes:Array<IMeme>
 }
 
 class App extends React.Component<{}, IAppState> {
@@ -30,21 +32,31 @@ class App extends React.Component<{}, IAppState> {
           underline: false,
           x:0, y:50
         },
-      images: []
+      images: [],
+      memes: []
     };
   }
   componentDidMount() {
-    fetch (`${ADR_REST}${REST_RESOURCES.images}`, {
+    const pimg = fetch (`${ADR_REST}${REST_RESOURCES.images}`, {
       method: 'GET',
       headers: { Accept: 'application/json'},
     })
-    .then(f=>f.json())
-    .then(arr => {this.setState({images:arr}); return arr;});
+    .then(f=>f.json());
+
+    const pmemes = fetch (`${ADR_REST}${REST_RESOURCES.memes}`, {
+      method: 'GET',
+      headers: { Accept: 'application/json'},
+    })
+    .then(f=>f.json());
+    Promise.all([pimg, pmemes]).then(arr_arr => {
+      this.setState({images : arr_arr[0], memes: arr_arr[1]});
+    })
   }
   render() {
     return <div className='App' style={{ textAlign:'center'}}>
       <Header />
       <Navbar />
+      <MemeThumbnail memes={this.state.memes} images={this.state.images}/>
       <FlexWide>
         <MemeSVGViewer
           meme={this.state.meme}
