@@ -1,0 +1,41 @@
+{
+  "memes": [
+    {
+      "id": 0,
+      "color": "red",
+      "fontSize": 40,
+      "fontWeight": "900",
+      "imageId": 0,
+      "italic": false,
+      "text": "1er meme",
+      "titre": "dummy",
+      "underline": false,
+      "x": 0,
+      "y": 50
+    },
+    {
+      "color": "blue",
+      "fontSize": 40,
+      "fontWeight": "900",
+      "imageId": 0,
+      "italic": false,
+      "text": "2 meme",
+      "titre": "dummy II",
+      "underline": false,
+      "x": 0,
+      "y": 50,
+      "id": 1
+    }
+  ],
+  "images": [
+    {
+        "id": 0,
+        "url": "good_enough.jpg",
+        "w": 805,
+        "h": 453,
+        "name": "Good Enough"
+      },
+      { "id": 1, "url": "Jackie-Chan-WTF.jpg", "w": 1280, "h": 720, "name": "Jackie" },
+      { "id": 2, "url": "no_the_office.jpg", "w": 752, "h": 423, "name": "The Office" }
+  ]
+}

@@ -17,17 +17,20 @@ class App extends React.Component<{}, IAppState> {
   constructor(props : {}) {
     super(props);
     // valeur initiale
-    this.state = {meme: {
-      color: 'tomato',
-      fontSize: 40,
-      fontWeight:'900',
-      imageId: 0,
-      italic: false,
-      text: '1er meme',
-      titre: 'dummy',
-      underline: false,
-      x:0, y:50
-    }, images: []};
+    this.state = {
+        meme: {
+          color: 'red',
+          fontSize: 40,
+          fontWeight:'900',
+          imageId: 0,
+          italic: false,
+          text: '1er meme',
+          titre: 'dummy',
+          underline: false,
+          x:0, y:50
+        },
+      images: []
+    };
   }
   render() {
     return <div className='App' style={{ textAlign:'center'}}>
@@ -35,9 +38,9 @@ class App extends React.Component<{}, IAppState> {
       <Navbar />
       <FlexWide>
         <MemeSVGViewer meme={this.state.meme} image={undefined}></MemeSVGViewer>
-        <MemeForm></MemeForm>    
+        <MemeForm meme={this.state.meme} onMemeChange={(meme: IMeme) => { this.setState({meme:meme}); }}></MemeForm>
       </FlexWide>
-      <Footer></Footer>
+      <Footer>{JSON.stringify(this.state.meme)}</Footer>
     </div>
   }
 }

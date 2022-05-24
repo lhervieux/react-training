@@ -1,8 +1,9 @@
 import React, {useEffect, useState} from "react";
 import style from './Buttons.module.css';
 import PropTypes from 'prop-types';
+import { IButtonProps } from "./Button.interface";
 
-function Button(props) {
+const Button:React.FC<IButtonProps> = (props) => {
 
     const [isClicked, setisClicked] = useState(false)
     useEffect(() => {
@@ -29,7 +30,7 @@ function Button(props) {
     </button>;
 }
 
-Button.propTypes = {
+/*Button.propTypes = {
     bgColor: PropTypes.string.isRequired,
     buttonStyle: PropTypes.object,
     color: PropTypes.string.isRequired,
@@ -42,6 +43,6 @@ Button.defaultProps = {
     bgColor: 'tomato',
     color: 'gold',
     type: 'button',
-}
+}*/
 
 export default Button;
