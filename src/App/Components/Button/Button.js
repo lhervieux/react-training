@@ -12,20 +12,20 @@ function Button(props) {
     }, [props, isClicked])
 
     return <button className={style.Button + (isClicked ? style.clicked : '')}
-    onClick={(evt) => {
-        setisClicked(true);
-        if (undefined !== props.onButtonClicked && 'function' === typeof props.onButtonClicked) {
-            props.onButtonClicked();
-        }
-    }}
-    style= {{
-        ...props.buttonStyle,
-        backgroundColor:props.bgColor,
-        color: props.color,
-    }}
-    type={props.type}
-    >
-    {props.children}
+        onClick={(evt) => {
+            setisClicked(true);
+            if (undefined !== props.onButtonClicked && 'function' === typeof props.onButtonClicked) {
+                props.onButtonClicked();
+            }
+        }}
+        style= {{
+            ...props.buttonStyle,
+            backgroundColor:props.bgColor,
+            color: props.color,
+        }}
+        type={props.type}
+        >
+            {props.children}
     </button>;
 }
 

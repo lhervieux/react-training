@@ -1,0 +1,56 @@
+{
+  "usesTypeScript": false,
+  "usesCssModule": true,
+  "cssPreprocessor": "css",
+  "testLibrary": "Testing Library",
+  "component": {
+    "default": {
+      "path": "src/App/Components",
+      "withStyle": true,
+      "withTest": true,
+      "withStory": false,
+      "withLazy": false
+    },
+    "func": {
+      "path": "src/App/Components",
+      "withStyle": true,
+      "withTest": true,
+      "withStory": false,
+      "withLazy": false,
+      "customTemplates" : {
+        "component" : "grc_templates/hook_func_js/TemplateName.js"
+      }
+    },
+    "ui": {
+      "path": "src/App/Components/Ui",
+      "withStyle": true,
+      "withTest": true,
+      "withStory": false,
+      "withLazy": false,
+      "customTemplates" : {
+        "component" : "grc_templates/hook_func_js/TemplateName.js"
+      }
+    },
+    "tsfunc": {
+      "path": "src/App/Components/MemeForm",
+      "withStyle": true,
+      "withTest": true,
+      "withStory": false,
+      "withLazy": false,
+      "customTemplates" : {
+        "component" : "grc_templates/hook_func_ts/TemplateName.tsx"
+      }
+    },
+    "layout": {
+      "path": "src/App/Components/Layout",
+      "withStyle": true,
+      "withTest": true,
+      "withStory": false,
+      "withLazy": false,
+      "customTemplates" : {
+        "component" : "grc_templates/layout_func_js/TemplateName.js",
+        "style" : "grc_templates/layout_func_js/TemplateName.module.css"
+      }
+    }
+  }
+}
